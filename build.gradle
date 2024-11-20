@@ -1,5 +1,6 @@
 
 apply plugin: 'war'
+apply plugin: 'org.sonarqube'
 
 webAppDirName = 'WebContent'
 sourceCompatibility = "1.7"; 
@@ -7,10 +8,6 @@ targetCompatibility = "1.7";
 
 repositories {
 	mavenCentral()
-}
-
-plugins {
-	id "org.sonarqube" version "5.1.0.4882"
 }
 
 sourceSets {
@@ -44,4 +41,12 @@ war {
 	archiveName 'altoromutual.war'
 	exclude 'WEB-INF/classes/**/*.class'
 	exclude 'WEB-INF/lib/**/*.jar'
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "AltoroJ"
+        property "sonar.host.url", "http://localhost:9000"
+        property "sonar.login", "sqp_d5fa94479b12b786ee55f072c266390eb1ac2eca"
+    }
 }
